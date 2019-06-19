@@ -1,4 +1,4 @@
-#Redux Saga and Generator Functions
+# Redux Saga and Generator Functions
 
 Redux Saga is a Redux middleware that keeps dispatched actions pure and utilizes generator functions to neatly and efficiently handle asynchronous code.
 
@@ -54,7 +54,28 @@ Above you will see that by calling `it.next()` the function will continue to run
 
 * Note: There isn't a way to tell if a particular function is an iterator without using [Iterables](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators#Iterables).
 
-Generator functions, written as `function* ()` are functions that make writing iterative functions in a single function. 
+Generator functions, written as `function* ()` are functions that make writing iterative functions in a single function. Generators don't execute the code when initially called. They will execute an iterator that is called a "generator". The the `next()` is called, the function will run until it reaches the `yield` keyword. Generators can be called repeatedly, however, they will only iterate once.
+
+When using a generator function, the above iterator example can be simplied like so:
+
+```
+function* makeRangeIterator(start = 0, end = 100, step = 1) {
+  for (let i = start; i < end; i += step) {
+    yield i;
+  }
+}
+```
+
+In this case you will see that instead of running through the entire for loop, the generator is suspended until the next method is called upon it. For example:
+
+```
+let it = makeRangeIterator(1, 10, 2);
+
+console.log(it.next())
+
+```
+
+Will return `{ done: false, value: 1 }`. The yield keyword keeps the loop from continuing until the `next()` method is called.
 
 ### How Do Generators Work?
 
@@ -75,7 +96,6 @@ Generator functions, written as `function* ()` are functions that make writing i
 ### Example Usage
 
 ### Example Test
-
 
 
 
