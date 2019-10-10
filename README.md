@@ -36,7 +36,7 @@ function makeRangeIterator(start = 0, end = Infinity, step = 1) {
 
 ```
 
-This function has an iterator object with a `next()` property that returns an object is this syntaxt `{ value: ..., done: ... }`. This will continue to return a value with a falsey done property until `nextIndex` > `end`. At that point the iterator is terminated and returned object has would look like this `{value: ..., done: true }`. Once `done` equals true then you know the iterator has completed. All subsequent calls on to `next()` will return with `done: true`.
+This function has an iterator object with a `next()` property that returns an object in this syntax `{ value: ..., done: ... }`. This will continue to return a value with a falsey done property until `nextIndex` > `end`. At that point the iterator is terminated and returned object has would look like this `{value: ..., done: true }`. Once `done` equals true then you know the iterator has completed. All subsequent calls on to `next()` will return with `done: true`.
 
 Here is what is would look like to use `makeRangeIterator()`.
 
